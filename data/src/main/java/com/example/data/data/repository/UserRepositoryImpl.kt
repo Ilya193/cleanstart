@@ -10,7 +10,7 @@ private const val SHARED_PREFS_NAME = "shared_prefs_name"
 private const val KEY_FIRST_NAME = "firstName"
 private const val KEY_LAST_NAME = "lastName"
 
-class UserRepositoryImpl(private val userStorage: UserStorage): UserRepository {
+class UserRepositoryImpl(private val userStorage: UserStorage) : UserRepository {
     override fun saveName(saveParam: SaveUserNameParam): Boolean {
         val user = User(firstName = saveParam.name, lastName = "")
         return userStorage.save(user)
