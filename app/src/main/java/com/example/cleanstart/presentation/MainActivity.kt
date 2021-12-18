@@ -5,19 +5,18 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.cleanstart.databinding.ActivityMainBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
 
-    private lateinit var vm: MainViewModel
+    private val vm: MainViewModel by viewModel<MainViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
-        vm = ViewModelProvider(this, MainViewModelFactory(this))[MainViewModel::class.java]
 
         binding.receiveButton.setOnClickListener {
             //binding.getDataText.text =

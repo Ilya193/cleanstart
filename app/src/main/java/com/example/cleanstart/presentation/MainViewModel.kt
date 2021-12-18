@@ -11,9 +11,6 @@ class MainViewModel(
     private val getUserNameUseCase: GetUserNameUseCase,
     private val saveUserNameUseCase: SaveUserNameUseCase,
 ) : ViewModel() {
-    /*private val userRepository by lazy { UserRepositoryImpl(SharedPrefUserStorage(applicationContext)) }
-    private val getUserNameUseCase by lazy { GetUserNameUseCase(userRepository) }
-    private val saveUserNameUseCase by lazy { SaveUserNameUserCase(userRepository) }*/
 
     private val _data = MutableLiveData<String>()
     val data: LiveData<String>
