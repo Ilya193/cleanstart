@@ -4,12 +4,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import com.example.cleanstart.app.App
 import com.example.cleanstart.databinding.ActivityMainBinding
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
+
+    @Inject
+    lateinit var vmFactory: MainViewModelFactory
 
     private lateinit var vm: MainViewModel
 
@@ -17,7 +22,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        vm = ViewModelProvider(this, MainViewModelFactory(this))[MainViewModel::class.java]
+        (applicationContext as App).appComponent.inject(this)
+
+        vm = ViewModelProvider(this, vmFactory)[MainViewModel::class.java]
 
         binding.receiveButton.setOnClickListener {
             //binding.getDataText.text =
